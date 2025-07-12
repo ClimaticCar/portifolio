@@ -28,52 +28,63 @@ class PortfolioManager {
             
             this.portfolioImages = [];
             
+            // Processar dinamicamente todas as categorias retornadas pela API
             Object.entries(data).forEach(([category, images]) => {
-                images.forEach(image => {
-                    this.portfolioImages.push({
-                        src: `${this.apiBaseUrl}/${image.src}`,
-                        category: category,
-                        alt: image.alt
+                if (Array.isArray(images)) {
+                    images.forEach(image => {
+                        this.portfolioImages.push({
+                            src: `${this.apiBaseUrl}/${image.src}`,
+                            category: category,
+                            alt: image.alt,
+                            filename: image.filename
+                        });
                     });
-                });
+                }
             });
             
             console.log("Total de imagens carregadas:", this.portfolioImages.length);
+            console.log("Imagens processadas:", this.portfolioImages);
             
         } catch (error) {
             console.error("Erro ao carregar imagens da API:", error);
-            this.loadFallbackImages();
+            this.showErrorMessage();
         }
     }
 
-    loadFallbackImages() {
-        console.log("API indisponível. Usando imagens de fallback...");
-        this.portfolioImages = [
-            { src: 'images/815+MEXYk8L.jpg', category: 'small', alt: 'Instalação de ar condicionado em carro pequeno' },
-            { src: 'images/D_NQ_NP_793907-MLB82239353897_022025-O-kit-refrigeraco-ferramentas-bomba-vacuo-manifold-flange.webp', category: '', alt: 'Kit refrigeração' },
-            { src: 'images/D_Q_NP_679490-MLU71972907358_092023-O.webp', category: 'large', alt: 'Ferramentas de ar condicionado' },
-            { src: 'images/153089642_101145618703466_8293561109177108869_n.jpg', category: 'small', alt: 'Serviço de ar condicionado' },
-            { src: 'images/153382362_101145455370149_4521546796234082383_n.jpg', category: '', alt: 'Manutenção de ar condicionado' },
-            { src: 'images/153536239_101145582036803_4644744414708856299_n.jpg', category: 'large', alt: 'Reparo de ar condicionado' },
-            { src: 'images/153757448_101145565370138_5509669825380488893_n.jpg', category: 'small', alt: 'Limpeza de ar condicionado' },
-            { src: 'images/154055730_101145392036822_6535271949818781599_n.jpg', category: '', alt: 'Troca de gás de ar condicionado' },
-            { src: 'images/154371678_101145395370155_3305827279715775459_n.jpg', category: 'large', alt: 'Diagnóstico de ar condicionado' },
-            { src: 'images/154575596_103642168453811_763963750754329685_n.jpg', category: 'small', alt: 'Ar condicionado automotivo' },
-            { src: 'images/154695945_101145482036813_7480070034872470308_n.jpg', category: '', alt: 'Serviço de ar condicionado automotivo' },
-            { src: 'images/469035885_971478115003541_1592953628638306103_n.jpg', category: 'large', alt: 'Manutenção de ar condicionado automotivo' },
-            { src: 'images/469256964_971478138336872_6480118591484960727_n.jpg', category: 'small', alt: 'Reparo de ar condicionado automotivo' },
-            { src: 'images/480408440_1026814242803261_4802262511460578313_n.jpg', category: '', alt: 'Limpeza de ar condicionado automotivo' },
-            { src: 'images/480564866_1026095866208432_5419260286000376392_n.jpg', category: 'large', alt: 'Troca de gás de ar condicionado automotivo' }
-        ];
-        
-        const portfolioSection = document.querySelector("#portfolio .section-subtitle");
-        if (portfolioSection) {
-            portfolioSection.innerHTML = "Alguns dos meus trabalhos<br><small style=\"color: #666; font-size: 0.8em;\">⚠️ Conectando com servidor de imagens...</small>";
+    showErrorMessage() {
+        if (this.portfolioGrid) {
+            this.portfolioGrid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #666;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; color: #e74c3c;"></i>
+                    <h3>Erro ao carregar galeria</h3>
+                    <p>Não foi possível conectar com o servidor de imagens.</p>
+                    <button onclick="window.location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--primary-dark); color: white; border: none; border-radius: 5px; cursor: pointer;">
+                        Tentar Novamente
+                    </button>
+                </div>
+            `;
         }
     }
 
     displayPortfolioItems(category = "all") {
+        if (!this.portfolioGrid) {
+            console.error("portfolioGrid element not found!");
+            return;
+        }
+
         this.portfolioGrid.innerHTML = "";
+
+        // Se não há imagens carregadas, mostrar mensagem de carregamento
+        if (this.portfolioImages.length === 0) {
+            this.portfolioGrid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #666;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-dark);"></i>
+                    <h3>Carregando galeria...</h3>
+                    <p>Aguarde enquanto carregamos as imagens.</p>
+                </div>
+            `;
+            return;
+        }
 
         const filteredImages = category === "all"
             ? this.portfolioImages
@@ -81,18 +92,26 @@ class PortfolioManager {
 
         console.log(`Exibindo ${filteredImages.length} imagens para categoria: ${category}`);
 
-        const displayImages = filteredImages.slice(0, 12);
-
-        if (displayImages.length === 0) {
-            this.portfolioGrid.innerHTML = "<p>Nenhuma imagem encontrada para esta categoria.</p>";
+        if (filteredImages.length === 0) {
+            this.portfolioGrid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #666;">
+                    <i class="fas fa-images" style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                    <p>Nenhuma imagem encontrada para esta categoria.</p>
+                </div>
+            `;
             return;
         }
 
-        displayImages.forEach((image, index) => {
+        filteredImages.forEach((image, index) => {
             const portfolioItem = document.createElement("div");
             portfolioItem.className = "portfolio-item fade-in";
             portfolioItem.innerHTML = `
-                <img src="${image.src}" alt="${image.alt}" loading="lazy" onerror="this.style.display=\'none\'">
+                <img src="${image.src}" 
+                     alt="${image.alt}" 
+                     title="${image.filename}"
+                     loading="lazy" 
+                     onerror="console.error('Erro ao carregar:', '${image.filename}'); this.parentElement.style.display='none';"
+                     onload="console.log('Carregada:', '${image.filename}');">
                 <div class="portfolio-overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
@@ -109,12 +128,20 @@ class PortfolioManager {
     }
 
     setupEventListeners() {
+        if (!this.filterBtns || this.filterBtns.length === 0) {
+            console.error("Filter buttons not found!");
+            return;
+        }
+
         this.filterBtns.forEach(btn => {
             btn.addEventListener("click", () => {
+                // Remove active de todos os botões
                 this.filterBtns.forEach(b => b.classList.remove("active"));
+                // Adiciona active no botão clicado
                 btn.classList.add("active");
 
                 const category = btn.getAttribute("data-filter");
+                console.log(`Filtro selecionado: ${category}`);
                 this.displayPortfolioItems(category);
             });
         });
@@ -149,6 +176,13 @@ class PortfolioManager {
         modalImg.src = src;
         modalImg.alt = alt;
         this.modal.style.display = "block";
+    }
+
+    // Método para recarregar as imagens (útil para atualizações em tempo real)
+    async refresh() {
+        console.log("Atualizando galeria...");
+        await this.loadImagesFromAPI();
+        this.displayPortfolioItems();
     }
 }
 
@@ -252,8 +286,11 @@ window.addEventListener("load", () => {
 });
 
 // Initialize portfolio on page load
+let portfolioManager;
 document.addEventListener("DOMContentLoaded", () => {
-    new PortfolioManager();
+    console.log("DOM carregado, inicializando PortfolioManager...");
+    
+    portfolioManager = new PortfolioManager();
 
     const elementsToAnimate = document.querySelectorAll(".hero-content, .hero-image, .about-text, .about-image, .service-card, .contact-item, .contact-form");
     elementsToAnimate.forEach(element => {
@@ -262,6 +299,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(handleScrollAnimations, 100);
 });
+
+// Função global para recarregar galeria (útil para debug ou atualizações)
+function refreshPortfolio() {
+    if (portfolioManager) {
+        portfolioManager.refresh();
+    }
+}
 
 // Keyboard navigation for accessibility
 document.addEventListener("keydown", (e) => {
