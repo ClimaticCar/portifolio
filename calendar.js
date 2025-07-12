@@ -389,7 +389,7 @@ class CalendarScheduler {
         }
         
         // Abrir WhatsApp
-        const whatsappUrl = `https://wa.me/5517988146826?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = `https://wa.me/5517991783454?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, "_blank");
         
         // Mostrar mensagem de sucesso
