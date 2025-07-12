@@ -609,7 +609,7 @@ body {
 
 .time-slots {
     display: grid;
-    grid-template-columns: repeat(1, 1fr); /* Padrão para 2 colunas */
+    grid-template-columns: repeat(4, 1fr); /* Padrão para 2 colunas */
     gap: 1rem;
 }
 
@@ -729,8 +729,8 @@ body {
         gap: 2rem;
     }
 
-    .time-slots {
-        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    .time-slots {        
+	grid-template-columns: repeat(4, 1fr);
     }
 
     .form-buttons {
