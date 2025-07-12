@@ -49,21 +49,21 @@ class PortfolioManager {
     loadFallbackImages() {
         console.log("API indisponível. Usando imagens de fallback...");
         this.portfolioImages = [
-            { src: 'images/815+MEXYk8L.jpg', category: 'carros_passeio', alt: 'Instalação de ar condicionado em carro pequeno' },
-            { src: 'images/D_NQ_NP_793907-MLB82239353897_022025-O-kit-refrigeraco-ferramentas-bomba-vacuo-manifold-flange.webp', category: 'veiculos_comerciais', alt: 'Kit refrigeração' },
-            { src: 'images/D_Q_NP_679490-MLU71972907358_092023-O.webp', category: 'caminhoes_onibus', alt: 'Ferramentas de ar condicionado' },
-            { src: 'images/153089642_101145618703466_8293561109177108869_n.jpg', category: 'carros_passeio', alt: 'Serviço de ar condicionado' },
-            { src: 'images/153382362_101145455370149_4521546796234082383_n.jpg', category: 'veiculos_comerciais', alt: 'Manutenção de ar condicionado' },
-            { src: 'images/153536239_101145582036803_4644744414708856299_n.jpg', category: 'caminhoes_onibus', alt: 'Reparo de ar condicionado' },
-            { src: 'images/153757448_101145565370138_5509669825380488893_n.jpg', category: 'carros_passeio', alt: 'Limpeza de ar condicionado' },
-            { src: 'images/154055730_101145392036822_6535271949818781599_n.jpg', category: 'veiculos_comerciais', alt: 'Troca de gás de ar condicionado' },
-            { src: 'images/154371678_101145395370155_3305827279715775459_n.jpg', category: 'caminhoes_onibus', alt: 'Diagnóstico de ar condicionado' },
-            { src: 'images/154575596_103642168453811_763963750754329685_n.jpg', category: 'carros_passeio', alt: 'Ar condicionado automotivo' },
-            { src: 'images/154695945_101145482036813_7480070034872470308_n.jpg', category: 'veiculos_comerciais', alt: 'Serviço de ar condicionado automotivo' },
-            { src: 'images/469035885_971478115003541_1592953628638306103_n.jpg', category: 'caminhoes_onibus', alt: 'Manutenção de ar condicionado automotivo' },
-            { src: 'images/469256964_971478138336872_6480118591484960727_n.jpg', category: 'carros_passeio', alt: 'Reparo de ar condicionado automotivo' },
-            { src: 'images/480408440_1026814242803261_4802262511460578313_n.jpg', category: 'veiculos_comerciais', alt: 'Limpeza de ar condicionado automotivo' },
-            { src: 'images/480564866_1026095866208432_5419260286000376392_n.jpg', category: 'caminhoes_onibus', alt: 'Troca de gás de ar condicionado automotivo' }
+            { src: 'images/815+MEXYk8L.jpg', category: 'small', alt: 'Instalação de ar condicionado em carro pequeno' },
+            { src: 'images/D_NQ_NP_793907-MLB82239353897_022025-O-kit-refrigeraco-ferramentas-bomba-vacuo-manifold-flange.webp', category: '', alt: 'Kit refrigeração' },
+            { src: 'images/D_Q_NP_679490-MLU71972907358_092023-O.webp', category: 'large', alt: 'Ferramentas de ar condicionado' },
+            { src: 'images/153089642_101145618703466_8293561109177108869_n.jpg', category: 'small', alt: 'Serviço de ar condicionado' },
+            { src: 'images/153382362_101145455370149_4521546796234082383_n.jpg', category: '', alt: 'Manutenção de ar condicionado' },
+            { src: 'images/153536239_101145582036803_4644744414708856299_n.jpg', category: 'large', alt: 'Reparo de ar condicionado' },
+            { src: 'images/153757448_101145565370138_5509669825380488893_n.jpg', category: 'small', alt: 'Limpeza de ar condicionado' },
+            { src: 'images/154055730_101145392036822_6535271949818781599_n.jpg', category: '', alt: 'Troca de gás de ar condicionado' },
+            { src: 'images/154371678_101145395370155_3305827279715775459_n.jpg', category: 'large', alt: 'Diagnóstico de ar condicionado' },
+            { src: 'images/154575596_103642168453811_763963750754329685_n.jpg', category: 'small', alt: 'Ar condicionado automotivo' },
+            { src: 'images/154695945_101145482036813_7480070034872470308_n.jpg', category: '', alt: 'Serviço de ar condicionado automotivo' },
+            { src: 'images/469035885_971478115003541_1592953628638306103_n.jpg', category: 'large', alt: 'Manutenção de ar condicionado automotivo' },
+            { src: 'images/469256964_971478138336872_6480118591484960727_n.jpg', category: 'small', alt: 'Reparo de ar condicionado automotivo' },
+            { src: 'images/480408440_1026814242803261_4802262511460578313_n.jpg', category: '', alt: 'Limpeza de ar condicionado automotivo' },
+            { src: 'images/480564866_1026095866208432_5419260286000376392_n.jpg', category: 'large', alt: 'Troca de gás de ar condicionado automotivo' }
         ];
         
         const portfolioSection = document.querySelector("#portfolio .section-subtitle");
