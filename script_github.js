@@ -4,7 +4,7 @@ class PortfolioManager {
         this.portfolioGrid = document.getElementById("portfolioGrid");
         this.filterBtns = document.querySelectorAll(".filter-btn");
         this.modal = null;
-        this.apiBaseUrl = 'https://climaticcar-api.onrender.com';
+        this.apiBaseUrl = 'https://climatic-api-h2qn.onrender.com';
         this.init();
     }
 
