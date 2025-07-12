@@ -84,7 +84,7 @@ class PortfolioManager {
         const displayImages = filteredImages.slice(0, 12);
 
         if (displayImages.length === 0) {
-            this.portfolioGrid.innerHTML = 
+            this.portfolioGrid.innerHTML = "<p>Nenhuma imagem encontrada para esta categoria.</p>";
             return;
         }
 
@@ -192,7 +192,7 @@ contactForm.addEventListener("submit", function(e) {
     const formData = new FormData(this);
     const name = formData.get("name");
     const phone = formData.get("phone");
-
+    const vehicleModel = formData.get("vehicleModel");
     const service = formData.get("service");
     const message = formData.get("message");
 
@@ -294,5 +294,3 @@ if ("IntersectionObserver" in window) {
         });
     }, 1000);
 }
-
-
