@@ -12,13 +12,26 @@
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/5517991783454" class="floating-btn whatsapp-btn" target="_blank" title="Fale conosco no WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://maps.google.com/?q=Rua+Ercilia+Gomes,+1083+-+Jardim+Santa+Maria,+São+José+do+Rio+Preto+-+SP,+15080-280" class="floating-btn location-btn" target="_blank" title="Ver localização no GPS">
+            <i class="fas fa-map-marker-alt"></i>
+        </a>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <nav class="nav">
             <div class="nav-container">
                 <div class="logo">
-                    <h2>ClimaticCar</h2>
-                    <span>Ar Condicionado Automotivo</span>
+                    <img src="images/logo.png" alt="ClimaticCar Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h2><span class="climatic">Climatic</span><span class="car">Car</span></h2>
+                        <span>Ar Condicionado Automotivo</span>
+                    </div>
                 </div>
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link">Início</a></li>
@@ -70,14 +83,14 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Sobre a Climatic Car</h2>
+                <h2 class="section-title">Sobre a <span class="climatic">Climatic</span> <span class="car">Car</span></h2>
                 <p class="section-subtitle">Conheça um pouco da nossa trajetória e experiência</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>ClimaticCar</h3>
+                    <h3><span class="climatic">Climatic</span><span class="car">Car</span></h3>
                     <p class="about-description">
-                        A ClimaticCar é especializada em manutenção, instalação e diagnóstico de ar condicionado para veículos automotores. Fundada em 20/01/2021, com CNPJ 40.486.165/0001-30, e razão social Jair Ricardo do Nascimento, dedicamo-nos a proporcionar soluções completas e de alta qualidade para a climatização do seu veículo.
+                        A <span class="climatic">Climatic</span><span class="car">Car</span> é especializada em manutenção, instalação e diagnóstico de ar condicionado para veículos automotores. Fundada em 20/01/2021, dedicamo-nos a proporcionar soluções completas e de alta qualidade para a climatização do seu veículo.
                     </p>
                     <div class="about-stats">
                         <div class="stat">
@@ -88,10 +101,6 @@
                             <span class="stat-number">100%</span>
                             <span class="stat-label">Qualidade Garantida</span>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number">CNPJ</span>
-                            <span class="stat-label">40.486.165/0001-30</span>
-                        </div>
                     </div>
                     <div class="credentials">
                         <div class="credential">
@@ -101,6 +110,9 @@
                         <div class="credential">
                             <i class="fas fa-map-marker-alt"></i>
                             <span>São José do Rio Preto - SP</span>
+                            <a href="https://maps.google.com/?q=Rua+Ercilia+Gomes,+1083+-+Jardim+Santa+Maria,+São+José+do+Rio+Preto+-+SP,+15080-280" target="_blank" class="gps-link" title="Ver no GPS">
+                                <i class="fas fa-route"></i>
+                            </a>
                         </div>
                         <div class="credential">
                             <i class="fas fa-check-circle"></i>
@@ -239,6 +251,9 @@
                             <h3>Localização</h3>
                             <p>Rua Ercilia Gomes, 1083 - Jardim Santa Maria</p>
                             <p>São José do Rio Preto - SP, CEP: 15080-280</p>
+                            <a href="https://maps.google.com/?q=Rua+Ercilia+Gomes,+1083+-+Jardim+Santa+Maria,+São+José+do+Rio+Preto+-+SP,+15080-280" class="contact-link gps-link" target="_blank">
+                                <i class="fas fa-route"></i> Ver no GPS
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -283,8 +298,13 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>ClimaticCar</h3>
+                    <h3><span class="climatic">Climatic</span><span class="car">Car</span></h3>
                     <p>Especializada em manutenção, instalação e diagnóstico de ar condicionado automotivo.</p>
+                    <div class="company-info">
+                        <p><strong>CNPJ:</strong> 40.486.165/0001-30</p>
+                        <p><strong>Razão Social:</strong> Jair Ricardo do Nascimento</p>
+                        <p><strong>Fundada em:</strong> 20/01/2021</p>
+                    </div>
                     <div class="social-links">
                         <a href="https://wa.me/5517991783454" target="_blank">
                             <i class="fab fa-whatsapp"></i>
@@ -308,13 +328,19 @@
                     <h4>Contato</h4>
                     <ul>
                         <li><i class="fas fa-phone"></i> +55 17 99178-3454</li>
-                        <li><i class="fas fa-map-marker-alt"></i> São José do Rio Preto - SP</li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i> 
+                            São José do Rio Preto - SP
+                            <a href="https://maps.google.com/?q=Rua+Ercilia+Gomes,+1083+-+Jardim+Santa+Maria,+São+José+do+Rio+Preto+-+SP,+15080-280" target="_blank" class="gps-footer-link" title="Ver no GPS">
+                                <i class="fas fa-route"></i>
+                            </a>
+                        </li>
                         <li><i class="fas fa-envelope"></i> <a href="mailto:jairnascimento.jrn@gmail.com" target="_blank" style="color: inherit; text-decoration: none;">jairnascimento.jrn@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; ClimaticCar - Ar Condicionado Automotivo. Todos os direitos reservados.</p>
+                <p>&copy; <span class="climatic">Climatic</span><span class="car">Car</span> - Ar Condicionado Automotivo. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -323,4 +349,3 @@
     <script src="calendar.js"></script>
 </body>
 </html>
-
